@@ -16,18 +16,18 @@ res = cursor.execute("select * from ClimateData;")
 for i in res:
     print(i)
 
-years = []
-co2 = []
-temp = []
+years = list(con.execute("select year from ClimateData;"))
+co2 = list(con.execute("select co2 from ClimateData;"))
+temp = list(con.execute("select temperature from ClimateData;"))
 
 plt.subplot(2, 1, 1)
-plt.plot(years, co2, 'b--')
+plt.plot(years, co2, 'ro-')
 plt.title("Climate Data")
 plt.ylabel("[CO2]")
 plt.xlabel("Year (decade)")
 
 plt.subplot(2, 1, 2)
-plt.plot(years, temp, 'r*-')
+plt.plot(years, temp, 'b*-')
 plt.ylabel("Temp (C)")
 plt.xlabel("Year (decade)")
 plt.show()
